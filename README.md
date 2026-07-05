@@ -1,4 +1,4 @@
-# Conventional Commits + SemVer Cheatsheet
+# Awesome Commit Conventions
 
 A practical, no-fluff cheatsheet for writing clean commit messages with **[Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)** and versioning releases with **[Semantic Versioning](https://semver.org/)**. Examples use the Node.js / JavaScript ecosystem (`npm`, `commitlint`, `semantic-release`).
 
@@ -24,7 +24,7 @@ A practical, no-fluff cheatsheet for writing clean commit messages with **[Conve
 
 ## Table of Contents
 
-- [Conventional Commits + SemVer Cheatsheet](#conventional-commits--semver-cheatsheet)
+- [Awesome Commit Conventions](#awesome-commit-conventions)
   - [TL;DR](#tldr)
   - [Table of Contents](#table-of-contents)
   - [Anatomy of a commit](#anatomy-of-a-commit)
