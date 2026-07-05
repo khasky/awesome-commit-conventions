@@ -90,9 +90,7 @@ The **header** answers *what*. The **body** answers *why*. The **footer** carrie
 | Punctuation | no period at the end | `feat: add search.` |
 | Scope | optional, in parentheses | inconsistent names for the same module |
 
-> **The 50/72 rule** (popularized by the Linux kernel team long before Angular): keep the
-> **summary ≤ 50 chars** and **wrap body lines at 72 chars**. It's the most universal
-> discipline in git — even outside Conventional Commits.
+> **The 50/72 rule** (popularized by the Linux kernel team long before Angular): keep the **summary ≤ 50 chars** and **wrap body lines at 72 chars**. It's the most universal discipline in git — even outside Conventional Commits.
 
 ---
 
@@ -148,10 +146,7 @@ fix(game-modes): correct scoring in survival mode
 feat(game-modes): add ranked matchmaking
 ```
 
-> The spec technically tolerates spaces (`fix(game modes): ...`), but the default
-> `@commitlint/config-conventional` preset enforces `scope-case: lower-case`, so a
-> spaced scope will be **rejected** by CI. `kebab-case` is what humans and tools expect.
-> `camelCase` and `snake_case` exist but are rarer.
+> The spec technically tolerates spaces (`fix(game modes): ...`), but the default `@commitlint/config-conventional` preset enforces `scope-case: lower-case`, so a spaced scope will be **rejected** by CI. `kebab-case` is what humans and tools expect. `camelCase` and `snake_case` exist but are rarer.
 
 ---
 
@@ -196,8 +191,7 @@ feat(api)!: remove deprecated v1 endpoints
 BREAKING CHANGE: /api/v1/* removed. Migrate to /api/v2/*.
 ```
 
-> `BREAKING CHANGE` is the **one token the spec requires in uppercase**. Everything
-> else is case-insensitive to tools.
+> `BREAKING CHANGE` is the **one token the spec requires in uppercase**. Everything else is case-insensitive to tools.
 
 ---
 
@@ -283,8 +277,7 @@ style(ui): switch to design-token spacing scale
 perf(ui): memoize heavy list components
 a11y(ui): add ARIA labels to icon buttons
 ```
-> `a11y` is a non-standard but common type for accessibility. If your linter doesn't know it,
-> add it to the config or use `fix(ui):` instead.
+> `a11y` is a non-standard but common type for accessibility. If your linter doesn't know it, add it to the config or use `fix(ui):` instead.
 
 **Localization (`i18n`)**
 ```
@@ -343,8 +336,7 @@ A version is **`MAJOR.MINOR.PATCH`** (e.g. `2.4.1`). Given a change, increment:
 | `1.4.2` | exactly `1.4.2` | Pinned |
 | `*` / `latest` | anything | Avoid in production |
 
-> Caret (`^`) is why `0.x` is special in npm too: `^0.4.2` resolves to `>=0.4.2 <0.5.0`
-> (patch only), because pre-`1.0.0` every minor is treated as potentially breaking.
+> Caret (`^`) is why `0.x` is special in npm too: `^0.4.2` resolves to `>=0.4.2 <0.5.0` (patch only), because pre-`1.0.0` every minor is treated as potentially breaking.
 
 ---
 
@@ -562,11 +554,7 @@ sessions: show newly started local sessions in the list immediately (#322471)
 Respect workspace trust for the remote agent host (#322459)
 ```
 
-> **Takeaway:** Conventional Commits is the most popular *named* convention — dominant in the
-> npm/JS ecosystem and among libraries that want automatic changelogs and SemVer releases. But
-> it is **not** an industry-wide mandate. Half of the world's largest projects use their own
-> rules. What's truly universal isn't the prefixes — it's the discipline: a clear imperative
-> header, a narrow scope, and the 50/72 rule.
+> **Takeaway:** Conventional Commits is the most popular *named* convention — dominant in the npm/JS ecosystem and among libraries that want automatic changelogs and SemVer releases. But it is **not** an industry-wide mandate. Half of the world's largest projects use their own rules. What's truly universal isn't the prefixes — it's the discipline: a clear imperative header, a narrow scope, and the 50/72 rule.
 
 ---
 
