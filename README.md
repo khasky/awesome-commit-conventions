@@ -641,5 +641,3 @@ GOLDEN RULE  Header = WHAT.  Body = WHY.  When in doubt, read CONTRIBUTING.md.
 Documentation is released under
 [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
 Code snippets are released under the [MIT License](https://opensource.org/licenses/MIT).
-
-> Contributions welcome — spot an error or want to add a tooling recipe? Open an issue or PR.
