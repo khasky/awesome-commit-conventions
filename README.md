@@ -228,7 +228,7 @@ feat(search)!: change default sort to relevance
 chore(release): bump version to 1.4.0
 ```
 
-Two details worth noting:
+Two details:
 
 - A `revert:` commit **repeats the subject** of the commit it undoes.
 - `feat(search)!` — the `!` before the colon flags a breaking change **right in the header**.
