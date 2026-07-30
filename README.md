@@ -1,5 +1,7 @@
 # Awesome Commit Conventions
 
+[![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE) [![Web Reactions](https://api.webreactions.app/badge/github/khasky/awesome-commit-conventions.svg)](https://webreactions.app/?utm_source=github&utm_channel=repository&utm_medium=awesome-commit-conventions)
+
 A practical, no-fluff cheatsheet for writing clean commit messages with **[Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)** and versioning releases with **[Semantic Versioning](https://semver.org/)**. Examples use the Node.js / JavaScript ecosystem (`npm`, `commitlint`, `semantic-release`).
 
 ---
@@ -626,6 +628,4 @@ GOLDEN RULE  Header = WHAT.  Body = WHY.  When in doubt, read CONTRIBUTING.md.
 
 ## License
 
-Documentation is released under
-[Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
-Code snippets are released under the [MIT License](https://opensource.org/licenses/MIT).
+Released under the [MIT License](https://opensource.org/licenses/MIT).
