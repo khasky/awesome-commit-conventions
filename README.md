@@ -36,6 +36,7 @@ A practical, no-fluff cheatsheet for writing clean commit messages with **[Conve
   - [Scopes](#scopes)
   - [Body \& footer: when to add them](#body--footer-when-to-add-them)
   - [Breaking changes](#breaking-changes)
+    - [Which one to use](#which-one-to-use)
   - [A realistic history (20 commits)](#a-realistic-history-20-commits)
   - [Examples by area](#examples-by-area)
   - [Semantic Versioning (SemVer)](#semantic-versioning-semver)
@@ -188,12 +189,29 @@ feat(api)!: change default sort to relevance
 **B) `BREAKING CHANGE:` in the footer** (explicit, lands in the changelog with a callout):
 
 ```
-feat(api)!: remove deprecated v1 endpoints
+feat(api): remove deprecated v1 endpoints
 
 BREAKING CHANGE: /api/v1/* removed. Migrate to /api/v2/*.
 ```
 
+The footer alone is spec-compliant — the `!` is not required alongside it.
+
 > `BREAKING CHANGE` is the **one token the spec requires in uppercase**. Everything else is case-insensitive to tools.
+
+### Which one to use
+
+**Use both.** They cost one character and one line, and they cover different readers:
+
+- **Version bumps are identical.** release-please, semantic-release, and standard-version all bump **major** on either signal, so form B never loses you a release.
+- **Only `!` shows up in header-only views.** `git log --oneline`, the commit list on GitHub, `git shortlog`, and blame popups render the header and nothing else. Without `!`, a breaking commit reads as an ordinary feature — you have to open the body to find out.
+- **Some tooling parses the header only.** Certain commitlint rules and homegrown release scripts never look at the footer; for them the break exists only if `!` is there.
+- **Only the footer explains the break.** `!` says *something* broke; `BREAKING CHANGE:` says what and how to migrate, and that text is what lands in the changelog.
+
+```
+feat(api)!: remove deprecated v1 endpoints
+
+BREAKING CHANGE: /api/v1/* removed. Migrate to /api/v2/*.
+```
 
 ---
 
