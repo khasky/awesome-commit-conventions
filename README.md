@@ -31,6 +31,7 @@ A practical, no-fluff cheatsheet for writing clean commit messages with **[Conve
   - [Table of Contents](#table-of-contents)
   - [Anatomy of a commit](#anatomy-of-a-commit)
   - [The first line (the only required part)](#the-first-line-the-only-required-part)
+  - [The 50/72 rule](#the-5072-rule)
   - [Commit types](#commit-types)
     - [What exactly is `chore`?](#what-exactly-is-chore)
   - [Scopes](#scopes)
@@ -93,7 +94,28 @@ The **header** answers *what*. The **body** answers *why*. The **footer** carrie
 | Punctuation | no period at the end | `feat: add search.` |
 | Scope | optional, in parentheses | inconsistent names for the same module |
 
-> **The 50/72 rule** (popularized by the Linux kernel team long before Angular): keep the **summary ≤ 50 chars** and **wrap body lines at 72 chars**. It's the most universal discipline in git — even outside Conventional Commits.
+> **The 50/72 rule**: keep the **summary ≤ 50 chars** and **wrap body lines at 72 chars**. It predates every convention on this page and applies outside Conventional Commits — see [The 50/72 rule](#the-5072-rule).
+
+---
+
+## The 50/72 rule
+
+The oldest habit in git commit messages, and the only one that survives every convention swap.
+
+**Where the numbers come from.** Tim Pope wrote them down in **2008** ([*A Note About Git Commit Messages*](https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)): summary around 50 characters, body wrapped at about 72. The 72 is arithmetic, not taste — `git log` indents the message body by **4 spaces**, and on an 80-column terminal leaving 4 columns on each side leaves exactly 72. The 50 is the tighter budget for the summary, which has to survive `git log --oneline` next to an abbreviated hash and truncation in web list views.
+
+**You do the wrapping.** Git stores the message byte-for-byte and never reflows it. A body written as one long line stays one long line forever.
+
+**What breaks if you ignore it.** Mechanically, nothing — no limit is enforced anywhere unless a hook checks. The cost is operational and depends entirely on where the message gets read:
+
+1. **Terminal — `git log`, `tig`, `gitk`, IDE blame panels.** No reflow. A long line either hard-breaks at the window edge, with the continuation starting at column 0 instead of the 4-space indent, so the paragraph reads as torn; or, under `less -S`, gets cut off and is reachable only by scrolling sideways.
+2. **A long summary is the most visible failure.** `git log --oneline` stops being scannable, GitHub truncates the title around 70 characters with an ellipsis and pushes the tail into the body view, and reflog entries and notification emails show a stub.
+3. **Email — `git format-patch` to a mailing list.** RFC 5322 recommends ≤ 78 characters per line and hard-caps at 998; past that, SMTP servers fold the lines themselves and the patch arrives damaged. Every level of reply quoting prepends `> `, so unwrapped paragraphs sprawl further with each round. Irrelevant if you never send patches by mail.
+4. **Web — GitHub, GitLab.** The renderer wraps for you. "One paragraph = one line" reads fine there. This is the one place the rule buys nothing.
+
+So a GitHub-only workflow loses nothing visible by dropping 50/72 — and complying costs nothing either, which is why the convention outlives the terminals that produced it.
+
+The one hard failure is a hook. `@commitlint/config-conventional` sets `header-max-length`, `body-max-line-length`, and `footer-max-line-length` to **100 characters each, at error severity** — a paragraph-per-line body is rejected before the commit exists. Note those defaults are *looser* than 50/72 in the body and *twice* the summary budget: passing the linter is not the same as writing a well-formed message.
 
 ---
 
@@ -637,6 +659,7 @@ GOLDEN RULE  Header = WHAT.  Body = WHY.  When in doubt, read CONTRIBUTING.md.
 - **Conventional Commits 1.0.0** — <https://www.conventionalcommits.org/en/v1.0.0/>
 - **Semantic Versioning 2.0.0** — <https://semver.org/>
 - **Angular commit message guidelines** (the origin of the type vocabulary) — <https://github.com/angular/angular/blob/main/contributing-docs/commit-message-guidelines.md>
+- **A Note About Git Commit Messages** (Tim Pope, 2008 — the origin of 50/72) — <https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html>
 - **commitlint** — <https://commitlint.js.org/>
 - **semantic-release** — <https://semantic-release.gitbook.io/>
 - **commit-and-tag-version** — <https://github.com/absolute-version/commit-and-tag-version>
